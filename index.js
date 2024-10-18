@@ -9,31 +9,31 @@ const intervalId = setInterval(() => {
   getGameSchedules().then((data) => {
     const schedules = data.data.game_schedules;
     schedules.forEach((schedule) => {
-      // if (schedule.gameStatus === "Finished") {
-      //   clearInterval(intervalId);
-      // } else {
-      saveGameSchedule(schedule);
-      getBoxScores({
-        gameId: schedule.gameId,
-        seasonCode: schedule.seasonCode,
-        seasonType: schedule.seasonType,
-        provider: schedule.provider,
-      }).then((data) => {
-        const boxScore = data.data.boxscore;
-        saveBoxScore(boxScore);
-        getGameLeaders({
+      if (schedule.gameStatus === "Finished") {
+        clearInterval(intervalId);
+      } else {
+        saveGameSchedule(schedule);
+        getBoxScores({
           gameId: schedule.gameId,
           seasonCode: schedule.seasonCode,
           seasonType: schedule.seasonType,
           provider: schedule.provider,
         }).then((data) => {
-          const gameLeaders = data.data.game_leaders;
-          gameLeaders.forEach((gameLeader) => {
-            saveGameLeader(boxScore, gameLeader);
+          const boxScore = data.data.boxscore;
+          saveBoxScore(boxScore);
+          getGameLeaders({
+            gameId: schedule.gameId,
+            seasonCode: schedule.seasonCode,
+            seasonType: schedule.seasonType,
+            provider: schedule.provider,
+          }).then((data) => {
+            const gameLeaders = data.data.game_leaders;
+            gameLeaders.forEach((gameLeader) => {
+              saveGameLeader(boxScore, gameLeader);
+            });
           });
         });
-      });
-      // }
+      }
     });
   });
 }, interval);
