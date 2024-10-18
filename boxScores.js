@@ -23,7 +23,7 @@ const getBoxScores = async ({ gameId, seasonCode, seasonType, provider }) => {
     };
 
     const response = await fetch(
-      "https://api.digitalfanexperience.com/v1/basketball/app/graphql?sport_key=dfe06dc26b72ab7c4e4&env_key=dev&device=ios&version=1.0.0&locale=en-gb",
+      `https://api.digitalfanexperience.com/v1/basketball/app/graphql?sport_key=${process.env.SPORT_KEY}&env_key=${process.env.ENV_KEY}&device=ios&version=1.0.0&locale=en-gb`,
       requestOptions
     );
     const data = await response.json();

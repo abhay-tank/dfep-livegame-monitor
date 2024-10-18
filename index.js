@@ -2,7 +2,7 @@ const { getGameSchedules, saveGameSchedule } = require("./gameSchedules");
 const { getBoxScores, saveBoxScore } = require("./boxScores");
 const { getGameLeaders, saveGameLeader } = require("./gameLeaders");
 
-const interval = 20000;
+const interval = parseInt(process.env.INTERVAL) || 20000;
 
 const intervalId = setInterval(() => {
   console.log("Polling");

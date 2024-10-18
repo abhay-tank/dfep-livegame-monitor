@@ -4,7 +4,7 @@
   "description": "This script logs and saves api responses of DFEP Live Game",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node --env-file=.env index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "abhay-tank",
