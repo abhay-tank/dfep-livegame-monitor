@@ -37,7 +37,7 @@ const saveGameSchedule = (schedule) => {
 
     const fileName = `${folderName}/${schedule.dfepGameQuarterClock}-${schedule.updated_at}.json`;
     const data = JSON.stringify(schedule, null, 2);
-    fs.writeFileSync(fileName, data, (err) => {
+    fs.writeFile(fileName, data, (err) => {
       if (err) {
         console.error(err);
       } else {

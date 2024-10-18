@@ -49,7 +49,7 @@ const saveBoxScore = (boxScore) => {
 
     const fileName = `${folderName}/${boxScore.updated_at}.json`;
     const data = JSON.stringify(boxScore, null, 2);
-    fs.writeFileSync(fileName, data, (err) => {
+    fs.writeFile(fileName, data, (err) => {
       if (err) {
         console.error(err);
       } else {
