@@ -7,7 +7,11 @@ const interval = parseInt(process.env.INTERVAL) || 20000;
 const intervalId = setInterval(() => {
   console.log("Polling");
   getGameSchedules().then((data) => {
-    const schedules = data.data.game_schedules;
+    const schedules = data?.data?.game_schedules;
+    if (!schedules) {
+      console.log(JSON.stringify(data, null, 2));
+      return;
+    }
     schedules.forEach((schedule) => {
       if (schedule.gameStatus === "Finished") {
         clearInterval(intervalId);

@@ -35,7 +35,7 @@ const saveGameSchedule = (schedule) => {
       fs.mkdirSync(folderName, { recursive: true });
     }
 
-    const fileName = `${folderName}/${schedule.dfepGameQuarterClock}-${schedule.updated_at}.json`;
+    const fileName = `${folderName}/${schedule.updated_at} | ${schedule.dfepGameQuarterClock}.json`;
     const data = JSON.stringify(schedule, null, 2);
     fs.writeFile(fileName, data, (err) => {
       if (err) {

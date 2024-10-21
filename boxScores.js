@@ -47,7 +47,7 @@ const saveBoxScore = (boxScore) => {
       fs.mkdirSync(folderName, { recursive: true });
     }
 
-    const fileName = `${folderName}/${boxScore.updated_at}.json`;
+    const fileName = `${folderName}/${boxScore.updated_at} | ${boxScore.dfepGameQuarterClock}.json`;
     const data = JSON.stringify(boxScore, null, 2);
     fs.writeFile(fileName, data, (err) => {
       if (err) {
